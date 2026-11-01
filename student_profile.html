@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>👤 My Profile</h2>
+<div class="card p-3 shadow-sm">
+  <h5>Name: {{ student.user.get_full_name }}</h5>
+  <h6>Username: {{ student.user.username }}</h6>
+</div>
+
+<h4 class="mt-4">📚 My Issued Books</h4>
+<ul class="list-group">
+  {% for issue in issued %}
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    {{ issue.book.title }}
+    <span class="badge bg-info text-dark">{{ issue.issue_date }}</span>
+  </li>
+  {% empty %}
+  <li class="list-group-item">No books issued.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-4">📊 Dashboard</h2>
+<div class="row text-center">
+  <div class="col-md-4">
+    <div class="card shadow-sm border-success">
+      <div class="card-body">
+        <h5 class="card-title text-success">Total Books</h5>
+        <p class="display-6">{{ total_books }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card shadow-sm border-primary">
+      <div class="card-body">
+        <h5 class="card-title text-primary">Books Issued</h5>
+        <p class="display-6">{{ total_issues }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card shadow-sm border-warning">
+      <div class="card-body">
+        <h5 class="card-title text-warning">Registered Students</h5>
+        <p class="display-6">{{ total_students }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<h4 class="mt-4">📋 Recent Issued Books</h4>
+<table class="table table-bordered">
+  <thead class="table-light">
+    <tr>
+      <th>Book</th>
+      <th>Student</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for issue in recent_issues %}
+    <tr>
+      <td>{{ issue.book.title }}</td>
+      <td>{{ issue.student.user.username }}</td>
+      <td>{{ issue.issue_date }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

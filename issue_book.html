@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <h2 class="mb-4">📖 Issue a Book</h2>
+
+  <form method="post" class="row g-3 shadow p-4 rounded bg-light">
+    {% csrf_token %}
+
+    <div class="col-md-6">
+      <label for="book" class="form-label">Select Book</label>
+      <select name="book" id="book" class="form-select" required>
+        <option value="" disabled selected>Choose a book...</option>
+        {% for book in books %}
+        <option value="{{ book.id }}">{{ book.title }} ({{ book.quantity }} available)</option>
+        {% endfor %}
+      </select>
+    </div>
+
+
+    <div class="col-md-6">
+      <label for="student" class="form-label">Select Student</label>
+      <select name="student" id="student" class="form-select" required>
+        <option value="" disabled selected>Choose a student...</option>
+        {% for student in students %}
+        <option value="{{ student.id }}">{{ student.user.username }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary w-100">Issue Book</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

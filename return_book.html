@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <h2 class="mb-4">🔁 Return Book</h2>
+
+  <form method="post" class="shadow p-4 rounded bg-light">
+    {% csrf_token %}
+    <p>Are you sure you want to return <strong>{{ issue.book.title }}</strong>?</p>
+    <button type="submit" class="btn btn-danger">Confirm Return</button>
+    <a href="{% url 'my_issued_books' %}" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+{% endblock %}

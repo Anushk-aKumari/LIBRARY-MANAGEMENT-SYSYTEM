@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: sans-serif; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid black; padding: 5px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h2>Issued Book List</h2>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Book</th>
+            <th>Student</th>
+            <th>Issue Date</th>
+        </tr>
+        {% for issue in issues %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ issue.book.title }}</td>
+            <td>{{ issue.student.user.username }}</td>
+            <td>{{ issue.issue_date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

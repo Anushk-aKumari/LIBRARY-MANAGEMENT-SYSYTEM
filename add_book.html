@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <h2 class="mb-4">➕ Add a New Book</h2>
+
+  <form method="post" class="row g-3 shadow p-4 rounded bg-light">
+    {% csrf_token %}
+
+    <div class="col-md-6">
+      <label for="title" class="form-label">Title</label>
+      <input type="text" name="title" id="title" class="form-control" required>
+    </div>
+
+    <div class="col-md-6">
+      <label for="author" class="form-label">Author</label>
+      <input type="text" name="author" id="author" class="form-control" required>
+    </div>
+
+    <div class="col-md-6">
+      <label for="isbn" class="form-label">ISBN</label>
+      <input type="text" name="isbn" id="isbn" class="form-control" required>
+    </div>
+
+    <div class="col-md-6">
+      <label for="quantity" class="form-label">Quantity</label>
+      <input type="number" name="quantity" id="quantity" class="form-control" required min="1">
+    </div>
+
+    <div class="mb-3">
+  <label class="form-label">Genre</label>
+  <input type="text" class="form-control" name="genre">
+</div>
+
+    <div class="col-12">
+      <button type="submit" class="btn btn-success w-100">Add Book</button>
+    </div>
+  </form>
+  
+</div>
+
+
+{% endblock %}
